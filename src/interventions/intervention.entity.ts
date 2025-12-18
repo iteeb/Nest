@@ -4,19 +4,19 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   ManyToMany,
-  JoinTable,
+  CreateDateColumn,
 } from 'typeorm';
 import { Device } from '../devices/device.entity';
 import { UserEntity } from '../auth/user/user.entity';
 import { SparePart } from '../parts/spare-part.entity';
+import { IsArray } from 'class-validator';
 
 @Entity()
 export class Intervention {
-  // <- assure-toi que c'est exporté
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @CreateDateColumn({ type: 'timestamp' })
   date: Date;
 
   @Column()
@@ -29,6 +29,6 @@ export class Intervention {
   user: UserEntity;
 
   @ManyToMany(() => SparePart)
-  @JoinTable()
-  spareParts: SparePart[];
+  @IsArray()
+  sparePartIds: number[];
 }
