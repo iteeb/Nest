@@ -1,5 +1,5 @@
 export enum DeviceStatus {
-  PENDING = 'PENDING',
-  REPAIRING = 'REPAIRING',
-  READY = 'READY',
+  PENDING = 'pending',
+  REPAIRING = 'repairing',
+  READY = 'ready',
 }
